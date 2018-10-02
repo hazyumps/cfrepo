@@ -30,8 +30,8 @@ class Audits:
 #need to check for file existance
 #comb thru each day / hours
 def logWorker(file, log_msg):
-    f = open('logs/'+ file, 'at')
-    f.write(log_msg)
+    with open('logs/'+ file, 'at') as f:
+        f.write(log_msg)
 
 
 
