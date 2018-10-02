@@ -25,13 +25,17 @@ class Audits:
     def update_arr(self,update):
         self.arr.append(update)
 
+    def filer(self):
+        
+
 
 
 
 def getOrgIDs():
     getOrgs = Audits('accounts')
-    print(getOrgs.__dict__)
+
     org_json = getOrgs.response('GET',headers).json()
+
     totalPages = org_json['result_info']['total_pages']
 
     for i in range(0, totalPages):
@@ -40,9 +44,7 @@ def getOrgIDs():
         for org in inner['result']:
             getOrgs.update_arr({"Org_Name": org["name"],"Org_ID" : org["id"]})
 
-    pp(getOrgs.arr)
-
-    return
+    return getOrgs.arr
 
 
 pp(getOrgIDs())
