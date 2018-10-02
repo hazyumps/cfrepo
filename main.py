@@ -22,12 +22,16 @@ class Audits:
         self.r = requests.request(str(action),str(self.url),headers=headers)
         return self.r
 
-    def update_arr(self,update):
+    def update_arr(self, update):
         self.arr.append(update)
 
-    def filer(self):
-        
 
+
+#need to check for file existance
+#comb thru each day / hours
+def logWorker(file, log_msg):
+    f = open('logs/'+ file, 'at')
+    f.write(log_msg)
 
 
 
@@ -46,5 +50,13 @@ def getOrgIDs():
 
     return getOrgs.arr
 
+def main():
+    try:
+        getOrgIDs(xxx)
+    except:
+        logWorker('error.log',datetime.today().isoformat() + "  -----  " + "ERROR" + "\n")
 
-pp(getOrgIDs())
+main()
+#
+#pp(getOrgIDs())
+#
